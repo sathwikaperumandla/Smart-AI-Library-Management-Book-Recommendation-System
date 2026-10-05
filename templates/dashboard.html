@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>📚 Smart AI Library</h1>
+
+    <h2>Welcome, {{ username }}! 👋</h2>
+
+    <p>Welcome to your Smart Library Management System.</p>
+
+    <div class="menu">
+        <a href="{{ url_for('books') }}">
+            <button>📖 View Books</button>
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            <button>Logout</button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

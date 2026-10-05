@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📚 Book Library</h1>
+
+    <h2>Available Books</h2>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+        </tr>
+
+        {% for book in books %}
+        <tr>
+            <td>{{ book["title"] }}</td>
+            <td>{{ book["author"] }}</td>
+            <td>{{ book["category"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>🤖 AI Book Recommendation</h2>
+
+    <form method="POST" action="{{ url_for('recommend') }}">
+
+        <select name="category" required>
+            <option value="">Select Category</option>
+            <option value="Programming">Programming</option>
+            <option value="AI">AI</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Database">Database</option>
+            <option value="Networking">Networking</option>
+        </select>
+
+        <button type="submit">Recommend Books</button>
+
+    </form>
+
+    {% if recommendation %}
+        <h2>Recommended Books 🤖</h2>
+
+        {% if books %}
+            <p>Here are the books matching your selected category:</p>
+        {% else %}
+            <p>No books found in this category.</p>
+        {% endif %}
+    {% endif %}
+
+    <br>
+
+    <a href="{{ url_for('dashboard') }}">⬅ Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>
